@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  
+
+    <title>Masuk</title>
+
+    <!-- Link Local IMAGE & CSS -->
+    <link rel="stylesheet" href="{%static 'css/main.css'%}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/floating-labels/floating-labels.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <form class="form-signin" action="" method="post">
+      <div class="text-center mb-4">
+        <img class="login-logo" src="{% static 'image/logo.png' %}"/>
+       <br>
+        <h1 class="h3 mb-3 font-weight-normal">Masuk</h1>
+      </div>
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-label-group">
+          <input 
+              type="{{ field.field.widget.input_type }}" 
+              id="{{ field.id_for_label }}" 
+              class="form-control" 
+              name="{{ field.html_name }}"
+              required="required"
+          />
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        </div>
+      <p>{{ field.errors }}</p>
+      {% endfor %}
+      <button class="btn btn-lg btn-warning btn-block" type="submit">Login</button>
+      <p class="mt-5 mb-3 text-muted text-center">
+      
+    </form>
+  </body>
+</html>
